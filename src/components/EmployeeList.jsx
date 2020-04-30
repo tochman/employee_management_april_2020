@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import {
+  List, Image
+} from 'semantic-ui-react'
 
 class EmployeeList extends Component {
   state = {
@@ -15,15 +18,26 @@ class EmployeeList extends Component {
   }
   render() {
     return (
-      <ul>
+      <List>
         {
           this.state.employees.map(employee => {
             return (
-              <li key={employee.id}>{`${employee.first_name} ${employee.last_name}`}</li>
+              <List.Item key={employee.id}>
+                <Image avatar src={employee.avatar} />
+                <List.Content>
+                  <List.Header as='p'>
+                    {`${employee.first_name} ${employee.last_name}`}
+                  </List.Header>
+                  <List.Description style={{color: 'green'}}>
+                    {`${employee.email}`}
+                  </List.Description>
+
+                </List.Content>
+              </List.Item>
             )
           })
         }
-      </ul>
+      </List>
     );
   }
 }

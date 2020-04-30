@@ -6,7 +6,7 @@ describe('Display list of employees', () => {
 
     cy.get('section[name="main"]')
       .within(() => {
-        cy.get('li')
+        cy.get('div[class="item"]')
           .should('have.length', 4)
       })
   });
